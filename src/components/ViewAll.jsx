@@ -6,18 +6,18 @@ const ViewAll = () => {
     const [data, changeData] = useState(
 
         {
-            "todos":[ ]
-        } 
-       )
-       const fetchData=()=>{
+            "todos": []
+        }
+    )
+    const fetchData = () => {
         axios.get("https://dummyjson.com/todos").then(
-          (response)=>{
-            changeData(response.data)
-          }
+            (response) => {
+                changeData(response.data)
+            }
         ).catch().finally()
 
-       }
-       useEffect(()=>{fetchData()},[])
+    }
+    useEffect(() => { fetchData() }, [])
     return (
         <div>
             <Navbar />
@@ -28,23 +28,23 @@ const ViewAll = () => {
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">First</th>
-                                    <th scope="col">Last</th>
-                                    <th scope="col">Handle</th>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Todo</th>
+                                    <th scope="col">Completed</th>
+                                    <th scope="col">UserId</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                
+
                                 {data.todos.map(
-                                    (value,index)=>{
+                                    (value, index) => {
                                         return <tr>
-                                    
-                                        <td>{value.id}</td>
-                                        <td>{value.todo}</td>
-                                        <td>{value.completed}</td>
-                                        <td>{value.userId}</td>
-                                    </tr>
+
+                                            <td>{value.id}</td>
+                                            <td>{value.todo}</td>
+                                            <td>{value.completed}</td>
+                                            <td>{value.userId}</td>
+                                        </tr>
 
                                     }
                                 )}
